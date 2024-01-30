@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const cookieParser = ('cookie-parser');
 const jwt = require('jsonwebtoken');
 const app = express();
 const authenticate = require("../middleware/authenticate");
 app.use(express.json());
+// app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
 
 require("../db/conn");
@@ -125,7 +127,7 @@ router.post("/signin",async(req,res)=>{
                 res.status(400).json({error:"Invalid Credential pass "});
             }
             else{
-                res.json({message:"user Signun Successfully"});
+                res.json({message:"user Signup Successfully"});
             }
         }
         else{
